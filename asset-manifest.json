@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/MyFood/static/css/main.e69c276c.css",
+    "main.js": "/MyFood/static/js/main.bb19a0b3.js",
+    "static/js/787.d3befce1.chunk.js": "/MyFood/static/js/787.d3befce1.chunk.js",
+    "static/media/fa-solid-900.ttf": "/MyFood/static/media/fa-solid-900.b1a653db79258eeccc5d.ttf",
+    "static/media/fa-brands-400.ttf": "/MyFood/static/media/fa-brands-400.450a5c898f0b184b968b.ttf",
+    "static/media/fa-solid-900.woff2": "/MyFood/static/media/fa-solid-900.41c0f706d8ce93933771.woff2",
+    "static/media/fa-brands-400.woff2": "/MyFood/static/media/fa-brands-400.3ac6859b28be946745f9.woff2",
+    "static/media/steamy-pasta-marked-1-of-1.jpg": "/MyFood/static/media/steamy-pasta-marked-1-of-1.b4445bffb7e940a52ef4.jpg",
+    "static/media/404.png": "/MyFood/static/media/404.2f446841460501a5ea8e.png",
+    "static/media/fa-regular-400.ttf": "/MyFood/static/media/fa-regular-400.3cd9fb8fcec4ad0f99d4.ttf",
+    "static/media/mermeladamora.jpg": "/MyFood/static/media/mermeladamora.1a7a73d2ba6ea9188d63.jpg",
+    "static/media/fa-regular-400.woff2": "/MyFood/static/media/fa-regular-400.1f3772178d9e5bed38a6.woff2",
+    "static/media/faviconCopy.jpg": "/MyFood/static/media/faviconCopy.be681c1789f8b83eb060.jpg",
+    "static/media/fa-v4compatibility.ttf": "/MyFood/static/media/fa-v4compatibility.e314b618134d5be20996.ttf",
+    "static/media/fa-v4compatibility.woff2": "/MyFood/static/media/fa-v4compatibility.4ee7f902d88f819e251c.woff2",
+    "index.html": "/MyFood/index.html",
+    "main.e69c276c.css.map": "/MyFood/static/css/main.e69c276c.css.map",
+    "main.bb19a0b3.js.map": "/MyFood/static/js/main.bb19a0b3.js.map",
+    "787.d3befce1.chunk.js.map": "/MyFood/static/js/787.d3befce1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e69c276c.css",
+    "static/js/main.bb19a0b3.js"
+  ]
+}
