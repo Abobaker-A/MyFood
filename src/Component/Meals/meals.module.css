@@ -1,0 +1,15 @@
+.contantInput {
+    box-shadow: 1px 1px 3px white;
+    box-shadow: 1px 1px 3px white !important; 
+  }
+  .mealLayer{
+    width: 100%;
+    height: 100%;
+    background-color: #f9f6f6ca;
+    top: 100%;
+    transition: .5s;
+}
+
+.meal:hover .mealLayer{
+    top: 0;
+}

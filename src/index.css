@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body{
+  background: #000 !important;
+  color: #fff !important;
+  font-family: "Montserrat Alternates" !important ;
+  font-weight: 500;
+}
+a{
+  text-decoration: none;
+  color: #fff !important;
+}
+.mainColorText{
+  color: #C69749;
+}
+.mainColorBg{
+  background: #C69749;
+}
+nav{
+  background: #000;
+}
+input{
+  background: #000 !important;
+color: #fff !important;
+}
+input::placeholder{
+  color: rgba(255, 255, 255, 0.522) !important;
+  text-shadow: 1px 1px rgba(0, 0, 255, 0.548);
+  text-align: center;
+}
+.cursorPointer{
+  cursor : pointer !important ;
+}
+.title , .item , i{
+  transition: .5s all;
+}
+.title:hover , .item:hover{
+ color: #C69749 !important;
+}
+.item:hover i{
+  color: #fff !important;
+}
+.loading{
+  z-index: 999;
+  position: fixed !important;
+  right: 0;
+  left: 0;
+}
+
+.nav-link::after , .nav-link.active::after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: 0%;
+  left: 0;
+  height: 3px;
+  background: #C69749 ;
+  transition: .5s all;
+
+}
+.nav-link:hover::after ,.nav-link:hover {
+  color: #C69749 !important;
+  width: 80%;
+
+}
+.nav-link.active::after ,.nav-link.active {
+  color: #C69749 !important;
+  width: 80%;
+
+}
+.btn-floating:hover{
+  color: #C69749 !important;
+  background-color: #000;
+  border: #C69749 1px solid;
+}
+.nav-item i:hover{
+  color: #C69749;
+  cursor: pointer;
+}
+.OfflineLabel{
+  z-index: 999999;
+}
