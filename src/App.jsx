@@ -17,6 +17,7 @@ import LoadPage from './Component/LoadPage/LoadPage';
 import { Offline } from 'react-detect-offline';
 import { Provider } from 'react-redux';
 import store from './Component/Redux/Store';
+import Notes from './Component/Notes/Notes';
 
 
 
@@ -57,6 +58,7 @@ export default function App() {
       {path:"ingredients" , element : <ProtectedRoute saveUserData={saveUserData} userData={userData}><Ingredients /></ProtectedRoute> },
       {path:"profile" , element :<ProtectedRoute saveUserData={saveUserData} userData={userData}><Profile userData={userData}/></ProtectedRoute>  },
       {path:"MyFood" , element :<ProtectedRoute saveUserData={saveUserData} userData={userData}><Home /></ProtectedRoute>  },
+      {path:"notes" , element :<ProtectedRoute saveUserData={saveUserData} userData={userData}><Notes /></ProtectedRoute>  },
       {path:"*" , element : <Errorpage/> },
     ]
   }])

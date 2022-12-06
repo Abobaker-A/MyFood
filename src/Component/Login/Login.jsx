@@ -39,13 +39,13 @@ export default function Login({saveUserData}) {
     useEffect(() => {
       
       document.querySelector('.showPass').addEventListener('mousedown',function(e){
-          e.target.previousElementSibling.type='text'
-          e.target.classList.replace('fa-eye-slash',"fa-eye")        
-      })
-      document.querySelector('.showPass').addEventListener('mouseup',function(e){
-          e.target.previousElementSibling.type='password'
-          e.target.classList.replace('fa-eye',"fa-eye-slash")
-      })
+        e.target.previousElementSibling.type='text'
+        e.target.classList.replace('fa-eye-slash',"fa-eye")        
+    })
+    document.querySelector('.showPass').addEventListener('mouseup',function(e){
+        e.target.previousElementSibling.type='password'
+        e.target.classList.replace('fa-eye',"fa-eye-slash")
+    })
 
     
       return () => {
@@ -55,7 +55,7 @@ export default function Login({saveUserData}) {
     
 
   async function UserApi(){
-    let{data} = await axios.post(`https://route-egypt-api.herokuapp.com/signin`,user)
+    let{data} = await axios.post(`https://sticky-note-fe.vercel.app/signin`,user)
     if(data.message === 'success'){
       setIsLoading(false)
       localStorage.setItem('userToken',data.token)
@@ -83,16 +83,12 @@ export default function Login({saveUserData}) {
   function showError (key){
     if(errorList){
       for (let i = 0; i < errorList.length; i++) {
-
         if(errorList[i].context.label === key){
           return errorList[i].message;
-        }
-        
+        }  
       }
       return"";
-    }
-    
-   
+    }   
   }
 
 

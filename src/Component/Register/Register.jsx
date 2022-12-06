@@ -58,7 +58,7 @@ export default function Register() {
     
 
   async function sendUserApi(){
-    let{data} = await axios.post(`https://route-egypt-api.herokuapp.com/signup`,user)
+    let{data} = await axios.post(`https://sticky-note-fe.vercel.app/signup`,user)
     if(data.message === 'success'){
       setIsLoading(false)
       navigate("/login");

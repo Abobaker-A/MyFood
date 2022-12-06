@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { categMeals, getAreaApi, getingredients } from './../Redux/ApiSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMeals } from './../Redux/SearchSlice';
+import $ from "jquery";
 
 
 
@@ -18,6 +19,8 @@ useEffect(() => {
   dispatch(categMeals())
   dispatch(getAreaApi())
   dispatch(getingredients())
+  $("section.Categories").hide(10000)
+
   return () => {
   }
 }, [dispatch])
@@ -41,7 +44,7 @@ useEffect(() => {
             </div>
           </div>
           {categData.slice(0,9).map((categ,indx) => <div key={indx}   className="col-xl-2 col-md-3 col-sm-4 ">
-            <div onClick={()=>{dispatch(getMeals(["c",categ.strCategory])) ;navigate('/meals') }}  className={`title text-center cursorPointer`}>
+            <div onClick={async()=>{await dispatch(getMeals(["c",categ.strCategory])) ; await navigate('/meals') }}  className={`title text-center cursorPointer`}>
               <img className='w-100' src={categ.strCategoryThumb} alt="Logo" />
             <h3 > {categ.strCategory} </h3>
             </div>
@@ -64,7 +67,7 @@ useEffect(() => {
             </div>
           </div>
           {areaData.slice(0,9).map((area,indx) => <div    key={indx} className="col-xl-2 col-md-3 col-sm-4 cursorPointer">
-            <div onClick={()=>{dispatch(getMeals(["a",area.strArea])) ;navigate('/meals') }}>
+            <div className='item' onClick={async()=>{await dispatch(getMeals(["a",area.strArea])) ; await navigate('/meals') }}>
               <div  className="rounded-2  text-center cursor-pointer">
                           <i className="fa-solid mainColorText fa-city  fa-5x"></i>
                           <h3 className=" fw-semibold ">{area.strArea}</h3>
@@ -73,7 +76,7 @@ useEffect(() => {
           </div>)}
           <div className="col-xl-2 col-md-3 col-sm-4">
           <div className={"title text-center"}>
-            <Link to={"/ingredients"} className='display-5 title fw-bold'> More... </Link>
+            <Link to={"/area"} className='display-5 title fw-bold'> More... </Link>
             </div>
           </div>
   
@@ -91,7 +94,7 @@ useEffect(() => {
             </div>
           </div>
           {ingredientsData.slice(0,9).map((ingred,indx) => <div key={indx}    className="col-xl-2 col-md-3 col-sm-4 cursorPointer">
-            <div onClick={()=>{dispatch(getMeals(["i",ingred.strIngredient])) ;navigate('/meals') }} className={`item text-center`}>
+            <div onClick={async()=>{await dispatch(getMeals(["i",ingred.strIngredient])) ;await navigate('/meals') }} className={`item text-center`}>
               <div  className="rounded-2  text-center cursor-pointer">
                     <i className="fa-solid text-success fa-bowl-food fa-4x"></i>
                           <h3 className=" fw-semibold ">{ingred.strIngredient}</h3>

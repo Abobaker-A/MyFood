@@ -40,7 +40,7 @@ useEffect(() => {
             </div>
           </div>
           {categData.map((categ,indx) => <div key={indx}   className="col-xl-2  col-md-3 col-md-4 col-sm-6">
-            <div onClick={()=>{dispatch(getMeals(["c",categ.strCategory])) ;navigate('/meals') }}  className={`title text-center cursorPointer`}>
+            <div onClick={async()=>{await dispatch(getMeals(["c",categ.strCategory])) ;await navigate('/meals') }}  className={`title text-center cursorPointer`}>
               <img className='w-100' src={categ.strCategoryThumb} alt="Logo" />
             <h3 > {categ.strCategory} </h3>
             </div>

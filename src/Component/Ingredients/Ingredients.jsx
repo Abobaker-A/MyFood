@@ -39,15 +39,17 @@ useEffect(() => {
             <h4 to={"/ingredients"}  className='display-3  fw-bold'> Ingredients </h4>
             </div>
           </div>
-          {ingredientsData.map((ingred,indx) => <div key={indx}    className="col-xl-2  col-md-3 col-md-4 col-sm-6 cursorPointer">
-            <div onClick={()=>{dispatch(getMeals(["i",ingred.strIngredient])) ;navigate('/meals') }} className={`item text-center`}>
+          {ingredientsData.slice(0,42).map((ingred,indx) => <div key={indx}    className="col-xl-2  col-md-3 col-md-4 col-sm-6 cursorPointer">
+            <div onClick={async()=>{await dispatch(getMeals(["i",ingred.strIngredient])) ;await navigate('/meals') }} className={`item text-center`}>
               <div  className="rounded-2  text-center cursor-pointer">
                     <i className="fa-solid text-success fa-bowl-food fa-4x"></i>
                           <h3 className=" fw-semibold ">{ingred.strIngredient}</h3>
                           <p>{ingred.strDescription?ingred.strDescription.split(" ").splice(0, 10).join(" "):"Have Not Description"}</p>
                   </div>
             </div>
-          </div>)}
+          </div>
+          
+          )}
   
          
         
