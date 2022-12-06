@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/MyFood/static/css/main.d73e5d00.css",
-    "main.js": "/MyFood/static/js/main.60a03176.js",
+    "main.js": "/MyFood/static/js/main.0ab7eb63.js",
     "static/js/787.d3befce1.chunk.js": "/MyFood/static/js/787.d3befce1.chunk.js",
     "static/media/fa-solid-900.ttf": "/MyFood/static/media/fa-solid-900.b1a653db79258eeccc5d.ttf",
     "static/media/fa-brands-400.ttf": "/MyFood/static/media/fa-brands-400.450a5c898f0b184b968b.ttf",
@@ -17,11 +17,11 @@
     "static/media/fa-v4compatibility.woff2": "/MyFood/static/media/fa-v4compatibility.4ee7f902d88f819e251c.woff2",
     "index.html": "/MyFood/index.html",
     "main.d73e5d00.css.map": "/MyFood/static/css/main.d73e5d00.css.map",
-    "main.60a03176.js.map": "/MyFood/static/js/main.60a03176.js.map",
+    "main.0ab7eb63.js.map": "/MyFood/static/js/main.0ab7eb63.js.map",
     "787.d3befce1.chunk.js.map": "/MyFood/static/js/787.d3befce1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d73e5d00.css",
-    "static/js/main.60a03176.js"
+    "static/js/main.0ab7eb63.js"
   ]
 }
