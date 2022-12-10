@@ -7,7 +7,7 @@ import { getingredients } from './../Redux/ApiSlice';
 import { getMeals } from './../Redux/SearchSlice';
 
 
-export default function Categories() {
+export default function Ingredients() {
   let dispatch = useDispatch()
   let {  loading  ,ingredientsData } = useSelector((state)=>state.Apis)
 
@@ -16,6 +16,8 @@ export default function Categories() {
   let navigate = useNavigate()
 
 useEffect(() => {
+  document.querySelector(".nav-item .ingredients")?.click();
+
   dispatch(getingredients())
 
   return () => {

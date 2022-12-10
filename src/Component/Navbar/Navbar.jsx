@@ -1,14 +1,11 @@
-import React, { useLayoutEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import { logOut } from '../Redux/ApiSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
-export default function Navbar({userData,logOut}) {
-
-//  useLayoutEffect(() => {
-//   if(window.location.pathname.split('/').splice(1,1).join()!=null){
-//     document.querySelector(`.${window.location.pathname.split('/').splice(1,1).join()}`).classList.add('active')
-
-//   }
-//  }, [])
+export default function Navbar() {
+  let {userData} = useSelector((state)=>state.Apis);
+  let dispatch=useDispatch();
   
 
     function dispalyActive(e){
@@ -55,7 +52,8 @@ export default function Navbar({userData,logOut}) {
         </li>
         <li className="nav-item">
           <Link onClick={(e)=>dispalyActive(e.target)} className="nav-link position-relative  ingredients" to="/ingredients">Ingredients</Link>
-        </li>
+        </li> 
+       
       </ul> : ""}
      
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
@@ -71,7 +69,10 @@ export default function Navbar({userData,logOut}) {
         </li>
         {userData?  <>
           <li className="nav-item">
-          <span onClick={logOut} className="nav-link position-relative cursorPointer " >LogOut</span>
+          <span onClick={()=>dispatch(logOut())} className="nav-link position-relative cursorPointer " >LogOut</span>
+        </li>
+        <li className="nav-item">
+          <Link onClick={(e)=>dispalyActive(e.target)} className="nav-link position-relative  notes" to="/notes">Notes</Link>
         </li>
         <li className="nav-item">
           <Link  onClick={(e)=>dispalyActive(e.target)} className="nav-link position-relative profile " to="/profile">Profile</Link>

@@ -17,6 +17,8 @@ export default function Categories() {
   let navigate = useNavigate()  
 
 useEffect(() => {
+  document.querySelector(".nav-item .categories")?.click();
+
   dispatch(categMeals())
   return () => {
   }

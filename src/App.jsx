@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Main from './Component/Main/Main';
 import Home from './Component/Home/Home';
@@ -11,54 +11,40 @@ import Categories from './Component/Categories/Categories';
 import Area from './Component/Area/Area';
 import Ingredients from './Component/Ingredients/Ingredients';
 import Profile from './Component/Profile/Profile';
-import jwtDecode from "jwt-decode";
 import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute';
 import LoadPage from './Component/LoadPage/LoadPage';
 import { Offline } from 'react-detect-offline';
-import { Provider } from 'react-redux';
-import store from './Component/Redux/Store';
+import { saveUserData } from './Component/Redux/ApiSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import Notes from './Component/Notes/Notes';
 
 
 
 
 export default function App() {
-  const [userData, setUserData] = useState(null);
 
-  function saveUserData (){
-    let enCode = localStorage.getItem('userToken');
-    let deCode = jwtDecode(enCode)
-    setUserData(deCode)
-  }
-
+  let dispatch = useDispatch();
   useEffect(() => {
     if(localStorage.getItem('userToken')!==null){
-      saveUserData();
+      dispatch(saveUserData());
     }
   }, [])
   
-  function logOut(){
-    localStorage.removeItem('userToken');
-    setUserData(null)
-  }
-  
-  
-
   const router =createBrowserRouter([{
-    path:"" , element:<Main logOut={logOut} userData={userData}/> , children : [
-      {path:"" , element : <ProtectedRoute saveUserData={saveUserData} userData={userData}><Home/></ProtectedRoute> },
-      {path:"home" , element :<ProtectedRoute saveUserData={saveUserData} userData={userData}><Home /></ProtectedRoute>  },
-      {path:"login" , element : <Login saveUserData={saveUserData} /> },
+    path:"" , element:<Main /> , children : [
+      {path:"" , element : <ProtectedRoute  ><Home/></ProtectedRoute> },
+      {path:"home" , element :<ProtectedRoute  ><Home /></ProtectedRoute>  },
+      {path:"login" , element : <Login  /> },
       {path:"register" , element : <Register/> },
       {path:"load" , element : <LoadPage/> },
-      {path:"meals" , element :<ProtectedRoute saveUserData={saveUserData} userData={userData}><Meals /></ProtectedRoute>  },
-      {path:"details/:id" , element : <ProtectedRoute saveUserData={saveUserData} userData={userData}><Details /></ProtectedRoute> },
-      {path:"categories" , element : <ProtectedRoute saveUserData={saveUserData} userData={userData}><Categories /></ProtectedRoute> },
-      {path:"area" , element : <ProtectedRoute saveUserData={saveUserData} userData={userData}><Area /></ProtectedRoute> },
-      {path:"ingredients" , element : <ProtectedRoute saveUserData={saveUserData} userData={userData}><Ingredients /></ProtectedRoute> },
-      {path:"profile" , element :<ProtectedRoute saveUserData={saveUserData} userData={userData}><Profile userData={userData}/></ProtectedRoute>  },
-      {path:"MyFood" , element :<ProtectedRoute saveUserData={saveUserData} userData={userData}><Home /></ProtectedRoute>  },
-      {path:"notes" , element :<ProtectedRoute saveUserData={saveUserData} userData={userData}><Notes /></ProtectedRoute>  },
+      {path:"meals" , element :<ProtectedRoute  ><Meals /></ProtectedRoute>  },
+      {path:"details/:id" , element : <ProtectedRoute  ><Details /></ProtectedRoute> },
+      {path:"categories" , element : <ProtectedRoute  ><Categories /></ProtectedRoute> },
+      {path:"area" , element : <ProtectedRoute  ><Area /></ProtectedRoute> },
+      {path:"ingredients" , element : <ProtectedRoute  ><Ingredients /></ProtectedRoute> },
+      {path:"profile" , element :<ProtectedRoute  ><Profile /></ProtectedRoute>  },
+      {path:"MyFood" , element :<ProtectedRoute  ><Home /></ProtectedRoute>  },
+      {path:"notes" , element :<ProtectedRoute  ><Notes /></ProtectedRoute>  },
       {path:"*" , element : <Errorpage/> },
     ]
   }])
@@ -66,11 +52,8 @@ export default function App() {
     <Offline>
       <div className="position-fixed bottom-0 end-0 m-5 shadow-lg bg-light bg-opacity-25 p-4 rounded-4 OfflineLabel text-warning text-uppercase text-center"><h4>no internet connection</h4> <h6>You Are Offline</h6> </div>
     </Offline>
-    <Provider store={store}>
     <RouterProvider router={router}/>
 
-    </Provider>
-  
   </>
 
 

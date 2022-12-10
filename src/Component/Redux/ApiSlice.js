@@ -1,5 +1,6 @@
 import { createSlice , createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
+import  jwtDecode  from 'jwt-decode';
 
 
 
@@ -17,13 +18,27 @@ export let getingredients = createAsyncThunk ('Meals/getIngredientsAreaApi', asy
 })
 
 
-let initialState = {loading:false , categData : [] ,  areaData : [] , ingredientsData:[]}
+let initialState = {loading:false , categData : [] ,  areaData : [] , ingredientsData:[] ,userData:null}
 
-
+if(localStorage.getItem('userToken')!==null){
+    initialState.userData ={}
+}
 
 let apiSlice =  createSlice({
     name : "apiHome",
     initialState ,
+    reducers:{
+         saveUserData : (state)=>{
+            let enCode = localStorage.getItem('userToken');
+            let deCode = jwtDecode(enCode);
+            state.userData=deCode;
+          },
+
+           logOut:(state)=>{
+            localStorage.removeItem('userToken');
+            state.userData=null;
+          }
+    },
     extraReducers:(builder)=>{
         builder.addCase(categMeals.fulfilled , (state , action)=>{
             state.categData=action.payload;
@@ -72,3 +87,4 @@ let apiSlice =  createSlice({
 
 });
 export let categDataMeals = apiSlice.reducer;
+export let {saveUserData ,logOut } = apiSlice.actions;

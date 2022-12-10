@@ -2,11 +2,12 @@ import React , { useEffect, useState }from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Joi from 'joi';
-import LoadPage from '../LoadPage/LoadPage';
 import { Helmet } from 'react-helmet';
+import { saveUserData } from '../Redux/ApiSlice';
+import { useDispatch } from 'react-redux';
 
-export default function Login({saveUserData}) {
-  
+export default function Login() {
+  let dispatch =useDispatch();
   let navigate = useNavigate();
   const [errorApi, setErrorApi] = useState(null)
   const [errorList, setErrorList] = useState(null)
@@ -37,6 +38,7 @@ export default function Login({saveUserData}) {
     }
 
     useEffect(() => {
+  document.querySelector(".nav-item .login")?.click();
       
       document.querySelector('.showPass').addEventListener('mousedown',function(e){
         e.target.previousElementSibling.type='text'
@@ -58,8 +60,9 @@ export default function Login({saveUserData}) {
     let{data} = await axios.post(`https://sticky-note-fe.vercel.app/signin`,user)
     if(data.message === 'success'){
       setIsLoading(false)
-      localStorage.setItem('userToken',data.token)
-      saveUserData();
+      localStorage.setItem('userToken',data.token);
+      localStorage.setItem('userId', data.user._id );
+      dispatch(saveUserData() );
       navigate("/");
       
     }else{
@@ -98,7 +101,7 @@ export default function Login({saveUserData}) {
     <meta name="keywords" content="Login Meals Food city Country  "/>
     <title>Login</title>
   </Helmet>
-  {isLoading?<LoadPage color="text-white"/>:<section className="h-100 bg-black ">
+  <section className="h-100 bg-black ">
   <div className="container py-5 h-100 ">
     <div className="row d-flex justify-content-center align-items-center h-100 ">
       <div className="col ">
@@ -127,7 +130,7 @@ export default function Login({saveUserData}) {
                 {errorApi?<div className='alert alert-danger'>{errorApi}</div>:"" }
                 <div className="d-flex justify-content-between align-items-center pt-3">
                   <Link to={'/register'} >Dont Have Account? Register</Link>
-                  <button className="subBtn btn btn-info btn-lg ms-2">{isLoading?<i className='fas fa-spinner fa-spin'></i>:"Login"}</button>
+                  <button className={ `subBtn btn btn-info btn-lg ms-2 ${ isLoading?"disabled px-5":"" } ` }>{isLoading?<i className='fas fa-spinner fa-spin'></i>:"Login"}</button>
                 </div>
 
                 </form>
@@ -145,7 +148,7 @@ export default function Login({saveUserData}) {
       </div>
     </div>
   </div>
-</section>}
+</section>
   
   
   

@@ -13,6 +13,8 @@ export default function Meals() {
 
 
     useEffect(() => {
+  document.querySelector(".nav-item .meals")?.click();
+
         if(!mealsData){
             dispatch(getMealsBySerach(["s",""]))
         }

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import {  useNavigate } from 'react-router-dom';
@@ -6,11 +5,10 @@ import LoadPage from './../LoadPage/LoadPage';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAreaApi } from '../Redux/ApiSlice';
 import { getMeals } from './../Redux/SearchSlice';
-import $ from 'jquery/dist/jquery.min.js'
 
 
 
-export default function Categories() {
+export default function Area() {
   let navigate = useNavigate()
   let dispatch = useDispatch()
   let { loading , areaData  } = useSelector((state)=>state.Apis)
@@ -19,8 +17,9 @@ export default function Categories() {
 
 
 useEffect(() => {
+  document.querySelector(".nav-item .area")?.click();
+
   dispatch(getAreaApi());
-  $(document.body).animate({"transform": "scale(150%)"}, 5000);
   
 }, [dispatch])
 

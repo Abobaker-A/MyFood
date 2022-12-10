@@ -1,7 +1,18 @@
 import React from 'react'
 import { Helmet } from 'react-helmet';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
-export default function Profile({userData}) {
+export default function Profile() {
+  let {userData} = useSelector((state)=>state.Apis);
+  useEffect(() => {
+    
+    document.querySelector(".nav-item .profile")?.click();
+  
+    
+  }, [])
+  
+  
     let{first_name,last_name,age ,email} = userData ;
   return <>
    <Helmet>

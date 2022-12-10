@@ -4,14 +4,13 @@ import Navbar from './../Navbar/Navbar';
 import Footer from './../Footer/Footer';
 
 
-export default function Main({userData,logOut}) {
+export default function Main() {
 
 
 
   return <>
-  <Navbar logOut={logOut}  userData={userData}/>
+  <Navbar />
   <Outlet/>
   <Footer/>
-
   </>
 }

@@ -2,7 +2,6 @@ import axios from 'axios';
 import Joi from 'joi';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import LoadPage from '../LoadPage/LoadPage';
 import { Helmet } from 'react-helmet';
   
 
@@ -40,6 +39,7 @@ export default function Register() {
     }
     }
     useEffect(() => {
+    document.querySelector(".nav-item .register")?.click();
       
       document.querySelector('.showPass').addEventListener('mousedown',function(e){
           e.target.previousElementSibling.type='text'
@@ -101,7 +101,7 @@ export default function Register() {
     <meta name="keywords" content="Register Meals Food city Country  "/>
     <title>Register</title>
   </Helmet>
-  {isLoading?<LoadPage/>:<section className="h-100 bg-black ">
+  <section className="h-100 bg-black ">
   <div className="container py-5 h-100 ">
     <div className="row d-flex justify-content-center align-items-center h-100 ">
       <div className="col ">
@@ -156,7 +156,7 @@ export default function Register() {
                 {errorApi?<div className='alert alert-danger'>{errorApi}</div>:"" }
                 <div className="d-flex justify-content-end pt-3">
                   <button type="reset" className="btn btn-outline-danger btn-lg">Reset all</button>
-                  <button className="subBtn btn btn-info btn-lg ms-2">"Register"</button>
+                  <button className={ `subBtn btn btn-info btn-lg ms-2 ${ isLoading?"disabled px-5":"" } ` }>{isLoading?<i className='fas fa-spinner fa-spin'></i>:"Register"}</button>
                 </div>
                 </form>
             
@@ -168,7 +168,7 @@ export default function Register() {
       </div>
     </div>
   </div>
-</section>}
+</section>
   
   
   
